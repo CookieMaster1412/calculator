@@ -1,0 +1,187 @@
+/* Allgemein */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e0e0e0;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Filter-Sektion */
+.filter-section {
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+  padding: 10px 20px;
+}
+
+#suche {
+  display: block;
+  margin: 0 auto 15px auto;
+  padding: 10px 12px;
+  width: 80%;
+  max-width: 400px;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.filter-row label {
+  font-size: 0.9em;
+  color: #333;
+}
+
+.filter-row select,
+.filter-row input {
+  margin-left: 5px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  background: #f5f5f5;
+}
+
+/* Grid */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  max-width: 1400px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+}
+
+/* Buch-Karten */
+.buch {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buch:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.buch img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.titel {
+  font-weight: bold;
+  font-size: 1em;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.autor {
+  font-size: 0.85em;
+  color: #555;
+}
+
+/* Modal Overlay */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #f5f5f5;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 900px; /* angepasst */
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal Body Flex */
+.modal-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Cover */
+.modal-cover {
+  flex: 0 0 300px; /* Fixe Breite für Cover */
+  max-width: 100%;
+}
+
+.modal-cover img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Info */
+.modal-info {
+  flex: 1; /* nimmt den restlichen Platz */
+  min-width: 200px;
+}
+
+.modal-info h2 {
+  margin-top: 0;
+  color: #222;
+}
+
+.modal-info p {
+  margin: 5px 0;
+  font-size: 0.95em;
+  color: #444;
+}
+
+/* Close Button */
+.modal-close {
+  color: #333;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive: kleiner Bildschirm -> untereinander */
+@media (max-width: 700px) {
+  .modal-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .modal-info {
+    text-align: center;
+  }
+}

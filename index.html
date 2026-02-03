@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>La Grande Biblioteca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>La Grande Biblioteca</h1>
+</header>
+
+<section class="filter-section">
+  <input type="text" id="suche" placeholder="Suche nach Titel, Autor oder ISBN...">
+
+  <div class="filter-row">
+    <label>Buchart:
+      <select id="filterBuchart">
+        <option value="">Alle</option>
+      </select>
+    </label>
+
+    <label>Genre:
+      <select id="filterGenre">
+        <option value="">Alle</option>
+      </select>
+    </label>
+
+    <label>Sprache:
+      <select id="filterSprache">
+        <option value="">Alle</option>
+      </select>
+    </label>
+
+    <label>Gelesen:
+      <select id="filterGelesen">
+        <option value="">Alle</option>
+        <option value="ja">Ja</option>
+        <option value="nein">Nein</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="filter-row">
+    <label>Seiten:
+      <input type="number" id="minSeiten" placeholder="min">
+      -
+      <input type="number" id="maxSeiten" placeholder="max">
+    </label>
+
+    <label>Erscheinungsjahr:
+      <input type="number" id="minJahr" placeholder="von">
+      -
+      <input type="number" id="maxJahr" placeholder="bis">
+    </label>
+  </div>
+</section>
+
+<section id="grid"></section>
+
+<!-- Buch-Details Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="modalClose" class="modal-close">&times;</span>
+    <div class="modal-body">
+      <div class="modal-cover">
+        <img id="modalCover" src="" alt="Cover">
+      </div>
+      <div class="modal-info">
+        <h2 id="modalTitel"></h2>
+        <p><strong>Autor:</strong> <span id="modalAutor"></span></p>
+        <p><strong>ISBN:</strong> <span id="modalISBN"></span></p>
+        <p><strong>Seiten:</strong> <span id="modalSeiten"></span></p>
+        <p><strong>Erscheinungsjahr:</strong> <span id="modalJahr"></span></p>
+        <p><strong>Buchart:</strong> <span id="modalBuchart"></span></p>
+        <p><strong>Genre:</strong> <span id="modalGenre"></span></p>
+        <p><strong>Sprache:</strong> <span id="modalSprache"></span></p>
+        <p><strong>Gelesen:</strong> <span id="modalGelesen"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
