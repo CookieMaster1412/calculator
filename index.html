@@ -12,9 +12,18 @@
 </header>
 
 <section class="filter-section">
-  <input type="text" id="suche" placeholder="Suche nach Titel, Autor oder ISBN...">
+  <div style="position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+  <input type="text" id="suche" placeholder="Suche nach Titel, Autor oder ISBN..." style="padding:8px; width:300px; font-size:1em;">
+</div>
 
   <div class="filter-row">
+
+    <label>Besitzer:
+    <select id="filterBesitzer">
+      <option value="">Alle</option>
+    </select>
+  </label>
+
     <label>Buchart:
       <select id="filterBuchart">
         <option value="">Alle</option>
