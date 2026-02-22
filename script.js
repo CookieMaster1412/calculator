@@ -118,7 +118,9 @@ function zeigeBuecher(buecher) {
     div.style.backgroundColor = b.gelesen.toLowerCase() === "ja" ? "#fff8e1" : "#f9f9f9";
 
     div.innerHTML = `
-      <img src="${b.cover}" alt="${b.titel}">
+      <img src="${b.cover}" alt="Cover"
+        loading="lazy"
+        onerror="this.src='https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png'">
       <div class="titel">${b.titel}</div>
       <div class="autor">${b.autor}</div>
     `;
@@ -127,7 +129,11 @@ function zeigeBuecher(buecher) {
 
     // Modal öffnen beim Klick
     div.addEventListener("click", () => {
-      document.getElementById("modalCover").src = b.cover;
+      const modalImg = document.getElementById("modalCover");
+        modalImg.src = b.cover;
+        modalImg.onerror = () => {
+          modalImg.src = "https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png";
+        };
       document.getElementById("modalTitel").textContent = b.titel;
       document.getElementById("modalAutor").textContent = b.autor;
       document.getElementById("modalISBN").textContent = b.isbn;
@@ -169,13 +175,16 @@ function filterBuecher() {
       (sprache === "" || buchSprachen.includes(sprache)) &&
       (buchart === "" || buchArten.includes(buchart)) &&
       (gelesen === "" || b.gelesen === gelesen) &&
-      (b.seiten === null ||
-        (b.seiten >= minSeiten && b.seiten <= maxSeiten)
-      ) &&
       (
-        b.erscheinungsjahr === null ||
-        (b.erscheinungsjahr >= minJahr && b.erscheinungsjahr <= maxJahr)
-      )&&
+  (minSeiten === 0 && maxSeiten === Infinity)
+    ? true
+    : (b.seiten !== null && b.seiten >= minSeiten && b.seiten <= maxSeiten)
+) &&
+(
+  (minJahr === 0 && maxJahr === Infinity)
+    ? true
+    : (b.erscheinungsjahr !== null && b.erscheinungsjahr >= minJahr && b.erscheinungsjahr <= maxJahr)
+)&&
       (besitzer === "" || b.besitzer === besitzer)
     );
   });
